@@ -19,3 +19,12 @@ Note: the Git history must be included.
 javac src/*.java
 java -cp src java.com.etraveli.movierental.Main
 ```
+Changes :
+1. Updated the java project with apache Maven and spring framework.
+2. Updated main class as spring boot stater class.
+
+To-Do :
+1. Create controllers to receive request from the web.
+2. Restructure/ re-organize of java classes and create packages for better readability.
+3. Re-construction of business logic with boiler plate code and helper classes.
+4. Configuration of database to store and manage the data.
