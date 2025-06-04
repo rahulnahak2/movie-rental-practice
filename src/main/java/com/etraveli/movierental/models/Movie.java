@@ -1,4 +1,4 @@
-package com.etraveli.movierental;
+package com.etraveli.movierental.models;
 
 public class Movie {
     private String title;
