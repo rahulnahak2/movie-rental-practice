@@ -1,2 +1,19 @@
-# Compiled class file
+# Compiled class files
 *.class
+
+# Maven target directory
+/target/
+
+# Logs
+*.log
+
+# IDE settings
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# OS-specific
+.DS_Store
+Thumbs.db
