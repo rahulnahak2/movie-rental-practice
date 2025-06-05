@@ -10,6 +10,8 @@ import com.etraveli.movierental.services.pricing.PricingStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import static com.etraveli.movierental.services.util.Constants.*;
+
 @Service
 public class RentalInfo {
   @Autowired
@@ -21,7 +23,7 @@ public class RentalInfo {
 
     double totalAmount = 0;
     int frequentRenterPoints = 0;
-    StringBuilder rentalSlip = new StringBuilder("Rental Record for " + customer.getName() + "\n");
+    StringBuilder rentalSlip = new StringBuilder(String.format(CUSTOMER_DETAIL_STATEMENT, customer.getName()));
     for (MovieRental rental : customer.getRentals()) {
       Movie movie = movieCatalog.getMovieById(rental.getMovieId());
       MovieType type = MovieType.valueOf(movie.getCode().toString().toUpperCase());
@@ -34,8 +36,8 @@ public class RentalInfo {
       rentalSlip.append("\t").append(movie.getTitle()).append("\t").append(charge).append("\n");
     }
     // add footer lines
-    rentalSlip.append("Amount owed is ").append(totalAmount).append("\n");
-    rentalSlip.append("You earned ").append(frequentRenterPoints).append(" frequent points\n");
+    rentalSlip.append(String.format(TOTAL_AMOUNT_STATEMENT, totalAmount));
+    rentalSlip.append(String.format(FREQUENT_POINT_STATEMENT, frequentRenterPoints));
 
     return rentalSlip.toString();
   }
