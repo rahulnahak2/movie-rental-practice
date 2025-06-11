@@ -1,8 +1,10 @@
 package com.etraveli.movierental.controller;
 
-import com.etraveli.movierental.models.CustomerDetails;
+import com.etraveli.movierental.entities.CustomerDetails;
+import com.etraveli.movierental.models.CustomerRequest;
 import com.etraveli.movierental.services.RentalInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -12,8 +14,8 @@ public class GenerateSlipController {
     private RentalInfo rentalInfo;
 
     @PostMapping ("/generate-slip")
-    public String getMovieRentalSlip(@RequestBody CustomerDetails customerDetails){
-        return  rentalInfo.statement(customerDetails);
+    public ResponseEntity<String> getMovieRentalSlip(@RequestBody CustomerRequest customerDetails){
+        return ResponseEntity.ok(rentalInfo.statement(customerDetails));
     }
 
 }
